@@ -4,8 +4,7 @@ on:
   push:
     branches: [main]
   pull_requests:
-  workflow_dispatch: 
-    
+  
 jobs:
   hello: 
     name: Hello Job
@@ -17,6 +16,9 @@ jobs:
   test:
     name: Test python package
     runs-on: ubuntu-latest
+    strategy:
+    matrix:
+      os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v6
